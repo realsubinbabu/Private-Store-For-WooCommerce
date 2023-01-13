@@ -1,0 +1,7 @@
+function wc_require_registration() {
+    if ( ! is_user_logged_in() && ( is_shop() || is_product_category() || is_product_tag() ) ) {
+        wp_redirect( get_permalink( get_option('woocommerce_myaccount_page_id') ) );
+        exit();
+    }
+}
+add_action( 'template_redirect', 'wc_require_registration' );
